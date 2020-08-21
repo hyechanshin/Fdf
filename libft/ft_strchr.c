@@ -3,32 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhasan <mhasan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/19 19:26:17 by ismelich          #+#    #+#             */
-/*   Updated: 2020/02/03 12:04:06 by mhasan           ###   ########.fr       */
+/*   Created: 2019/10/24 17:23:42 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/29 15:14:38 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Searches for the first occurrence of the character c in the string
-** pointed to by the argument str. str=World c=r return=rld
-*/
-
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	char *a;
+	char	*str;
 
-	a = (char *)str;
-	while (*a != c)
+	str = (char *)s;
+	while (*str != c)
 	{
-		if (!*a)
-		{
+		if (*str == '\0')
 			return (NULL);
-		}
-		a++;
+		str++;
 	}
-	return (a);
+	return (str);
 }

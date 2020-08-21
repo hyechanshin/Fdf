@@ -3,36 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhasan <mhasan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 12:07:10 by ismelich          #+#    #+#             */
-/*   Updated: 2020/02/03 12:04:06 by mhasan           ###   ########.fr       */
+/*   Created: 2019/10/22 18:26:37 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/29 15:08:04 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Allocates the requested memory and returns a pointer to it.
-*/
-
 void	*ft_memalloc(size_t size)
 {
-	void	*res;
-	char	*reschar;
-	size_t	i;
+	char	*mem;
+	char	*ptr;
 
-	i = 0;
-	res = malloc(size);
-	if (res == NULL)
-	{
+	mem = (char *)malloc(size);
+	if (mem == NULL)
 		return (NULL);
-	}
-	reschar = (char*)res;
-	while (i < size)
-	{
-		reschar[i] = '\0';
-		i++;
-	}
-	return (res);
+	ptr = mem;
+	while (size--)
+		*ptr++ = 0;
+	return (mem);
 }

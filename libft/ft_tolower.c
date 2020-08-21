@@ -3,24 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismelich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 15:17:39 by ismelich          #+#    #+#             */
-/*   Updated: 2019/11/04 20:37:12 by ismelich         ###   ########.fr       */
+/*   Created: 2019/10/21 15:37:24 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/21 17:07:41 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Converts a given letters to lowercase.
-*/
-
-int	ft_tolower(int c)
+int		ft_tolower(int c)
 {
-	if (c > 64 && c < 91)
-	{
+	if ((c >= 65) && (c <= 90))
 		return (c + 32);
-	}
 	return (c);
 }

@@ -3,24 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhasan <mhasan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 18:48:09 by ismelich          #+#    #+#             */
-/*   Updated: 2020/02/03 12:04:06 by mhasan           ###   ########.fr       */
+/*   Created: 2019/10/21 14:09:58 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/21 14:10:44 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Outputs the string to the standard outut followed by a new line.
-*/
-
-void	ft_putendl(char	const *str)
+void	ft_putendl(char const *s)
 {
-	if (str)
-	{
-		ft_putstr(str);
-		ft_putchar('\n');
-	}
+	if (!s)
+		return ;
+	ft_putendl_fd(s, 1);
 }

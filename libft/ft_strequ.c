@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   ft_streequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhasan <mhasan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/25 18:12:51 by ismelich          #+#    #+#             */
-/*   Updated: 2020/02/03 12:04:06 by mhasan           ###   ########.fr       */
+/*   Created: 2019/10/29 11:56:09 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/29 18:45:07 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Alphabetical order comparison between s1 and s2, If the 2 string are
-** identical the function returns 1, or 0 otherwise.
-*/
-
-int	ft_strequ(char const *s1, char const *s2)
+int		ft_strequ(char const *s1, char const *s2)
 {
-	int	i;
-
-	i = 0;
 	if (!s1 || !s2)
-	{
 		return (0);
-	}
-	while (s1[i] || s2[i])
+	if (ft_strlen(s1) != ft_strlen(s2))
+		return (0);
+	while (*s1 && *s2)
 	{
-		if ((s1[i] - s2[i]) != 0)
-		{
+		if (*s1 != *s2)
 			return (0);
-		}
-		i++;
+		s1++;
+		s2++;
 	}
 	return (1);
 }

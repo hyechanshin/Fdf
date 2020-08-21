@@ -3,47 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismelich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/19 18:10:37 by ismelich          #+#    #+#             */
-/*   Updated: 2019/11/04 11:21:29 by ismelich         ###   ########.fr       */
+/*   Created: 2019/10/24 16:18:55 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/29 16:29:19 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Appends the Nul-terminated string src to the end of dest. It will append
-** at most -  size strlen - 1 bytes, NUL-terminating the result.
-** Returns the total length of the string it tried to create.
-** The src and dest string should not overlap, as the behavior is undefined.
-*/
-
-size_t	ft_strlcat(char *dest, const char *src, size_t destsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	j;
-	size_t	dest_l;
-	size_t	src_l;
 
-	dest_l = ft_strlen(dest);
-	src_l = ft_strlen(src);
-	if (destsize == 0 || destsize < dest_l)
-	{
-		return (destsize + src_l);
-	}
 	i = 0;
 	j = 0;
-	while (dest[i])
-	{
+	while (dst[i] && i < size)
 		i++;
-	}
-	while (i < destsize - 1 && src[j])
+	while (src[j] && i + j + 1 < size)
 	{
-		dest[i] = src[j];
-		i++;
+		dst[i + j] = src[j];
 		j++;
 	}
-	dest[i] = '\0';
-	return (dest_l + src_l);
+	if (i != size)
+		dst[i + j] = '\0';
+	return (i + ft_strlen(src));
 }

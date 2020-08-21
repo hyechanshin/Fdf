@@ -3,24 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismelich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 15:33:36 by ismelich          #+#    #+#             */
-/*   Updated: 2019/11/04 20:38:15 by ismelich         ###   ########.fr       */
+/*   Created: 2019/10/21 15:22:47 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/29 17:05:06 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Converts lowercase letter to uppercase.
-*/
-
-int	ft_toupper(int c)
+int		ft_toupper(int c)
 {
-	if (c > 96 && c < 123)
-	{
+	if ((c >= 'a' && c <= 'z'))
 		return (c - 32);
-	}
-	return (c);
+	else
+		return (c);
 }

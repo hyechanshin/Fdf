@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isblank.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhasan <mhasan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 10:25:32 by ismelich          #+#    #+#             */
-/*   Updated: 2020/02/03 12:04:06 by mhasan           ###   ########.fr       */
+/*   Created: 2019/11/07 14:45:15 by hyshin            #+#    #+#             */
+/*   Updated: 2019/11/07 14:45:47 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Checks if the passed char is blank or not.
-*/
-
-int	ft_isblank(int c)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	return (c == '\t' || c == ' ');
+	while (lst)
+	{
+		f(lst);
+		lst = lst->next;
+	}
 }

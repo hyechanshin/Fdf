@@ -3,35 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhasan <mhasan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/25 11:16:48 by ismelich          #+#    #+#             */
-/*   Updated: 2020/02/03 12:04:06 by mhasan           ###   ########.fr       */
+/*   Created: 2019/10/29 11:52:32 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/29 17:26:08 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Applies the function f to each character of the string passed as argument.
-** Each character is passed by address to f to be modified if necessary.
-** In the while loop I call the function iter(which is in the main) inside
-** my ft_striter function to print out the string which I address through
-** &s. I increament the index afte I return from the iter function and do
-** the same step until I reach '\0'.
-*/
-
-void	ft_striter(char *s, void (*f)(char *))
+void	ft_striter(char *s, void (*f)(char*))
 {
-	int	i;
+	char *ptr;
 
-	i = 0;
-	if (s && f)
-	{
-		while (s[i])
-		{
-			f(&s[i]);
-			i++;
-		}
-	}
+	if (!s || !f)
+		return ;
+	ptr = s;
+	while (*ptr)
+		f(ptr++);
 }

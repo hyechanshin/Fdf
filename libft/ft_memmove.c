@@ -3,47 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhasan <mhasan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/23 18:35:12 by ismelich          #+#    #+#             */
-/*   Updated: 2020/02/03 12:04:06 by mhasan           ###   ########.fr       */
+/*   Created: 2019/10/22 15:09:55 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/22 17:42:29 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Copies n characters from str2 to str1, but for overlapping memory blocks,
-** memmove is a safer approach than memcpy.
-** If str2 is lesser than str1 it will just copy whats inside str2 with
-** n--, so we starting from the end of the array, ignoring the empty space
-** in str1, so we are able to move the chars into str1.
-*/
-
-void	*ft_memmove(void *str1, const void *str2, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*tmpstr1;
-	char	*tmpstr2;
-	size_t	i;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	if (!str1 && !str2)
-		return (NULL);
-	tmpstr1 = (char*)str1;
-	tmpstr2 = (char*)str2;
-	i = 0;
-	if (tmpstr2 < tmpstr1)
-		while (n > 0)
-		{
-			tmpstr1[n - 1] = tmpstr2[n - 1];
-			n--;
-		}
+	d = (unsigned char*)dst;
+	s = (unsigned char*)src;
+	if (s == d)
+		return (dst);
+	if (s < d)
+	{
+		s = (void*)src + len - 1;
+		d = dst + len - 1;
+		while (len--)
+			*d-- = *s--;
+	}
 	else
 	{
-		while (i < n)
-		{
-			tmpstr1[i] = tmpstr2[i];
-			i++;
-		}
+		while (len--)
+			*d++ = *s++;
 	}
-	return (str1);
+	return (dst);
 }

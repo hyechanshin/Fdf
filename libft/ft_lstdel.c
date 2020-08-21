@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhasan <mhasan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 14:23:10 by ismelich          #+#    #+#             */
-/*   Updated: 2020/02/03 12:04:06 by mhasan           ###   ########.fr       */
+/*   Created: 2019/11/07 14:46:21 by hyshin            #+#    #+#             */
+/*   Updated: 2019/11/07 15:19:48 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Checks wheter the passed char is white-space '\t' - horizontal tab
-** '\n'-newline, '\v'-vertical tab, '\f'-feed, '\r'-carriage return
-*/
-
-int	ft_isspace(int c)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	return (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r' ||
-			c == ' ');
+	t_list	*nxtlst;
+	t_list	*lst;
+
+	lst = *alst;
+	while (lst)
+	{
+		nxtlst = lst->next;
+		del(lst->content, lst->content_size);
+		free(lst);
+		lst = nxtlst;
+	}
+	*alst = NULL;
 }

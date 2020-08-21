@@ -3,37 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhasan <mhasan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/19 15:47:54 by ismelich          #+#    #+#             */
-/*   Updated: 2020/02/03 12:04:06 by mhasan           ###   ########.fr       */
+/*   Created: 2019/10/24 13:27:34 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/29 15:08:39 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Appends the string pointed to by src to the end of the string pointed to
-** by dest. dest=Hello src=World return HelloWorld.
-*/
-
 char	*ft_strcat(char *dest, const char *src)
 {
-	int	i;
-	int	l;
+	int i;
+	int j;
 
 	i = 0;
-	l = 0;
-	while (dest[l])
+	j = 0;
+	while (dest[i] != '\0')
 	{
-		l++;
-	}
-	while (src[i])
-	{
-		dest[l] = src[i];
-		l++;
 		i++;
 	}
-	dest[l] = '\0';
+	while (src[j] != '\0')
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
 	return (dest);
 }

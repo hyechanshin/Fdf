@@ -3,38 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismelich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/25 18:34:00 by ismelich          #+#    #+#             */
-/*   Updated: 2019/11/04 12:30:09 by ismelich         ###   ########.fr       */
+/*   Created: 2019/10/29 11:56:27 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/29 11:57:23 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Alphabetical oder comparison between s1 and s2 up to n character or until
-** a '\0' is reached. If the 2 strings are identical, the function returns
-** 1 or 0 otherwise.
-*/
-
-int	ft_strnequ(char const *s1, char const *s2, size_t n)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	size_t	i;
-
-	i = 0;
-	if (!s1 || !s2)
-	{
+	if (!s1 && !s2)
 		return (0);
-	}
-	while ((s1[i] || s2[i]) && n > 0)
-	{
-		if (s1[i] - s2[i] != 0)
-		{
-			return (0);
-		}
-		i++;
-		n--;
-	}
-	return (1);
+	if (ft_strncmp(s1, s2, n) == 0)
+		return (1);
+	return (0);
 }

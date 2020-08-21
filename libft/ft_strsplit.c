@@ -3,79 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismelich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/28 12:05:06 by ismelich          #+#    #+#             */
-/*   Updated: 2019/11/04 16:39:53 by ismelich         ###   ########.fr       */
+/*   Created: 2019/10/29 14:06:10 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/31 15:32:28 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Allocates (with malloc) and returns and array of fresh strings
-** (all ending with '\0', including the array itself) obtained by spliting
-** s using the character c as a delimiter (example ','). If the allocation
-** fails the function returns NULL. Return would be the string
-** representing the integer passed as argument.
-** We count the strings in count_strings, we go through the index of the array
-** as well, we return the nbr_str to ft_strsplit and allocate the space we
-** need. After that we go again through the string and the index to detect
-** if there is any c chars, now we duplicate the result we have got from the
-** while loops in strndup with the amount of s we have and the len of the
-** index without the c char '*' (in our example case). We save the duplication
-** in result[l], we check one last time if there are no '*' in our s. We return
-** the result.
-*/
-
-static int	count_strings(char *str, char c)
+static int		ft_count_words(const char *s, char c)
 {
-	int		nbr_strs;
+	int sp;
+	int sp_tmp;
 
-	nbr_strs = 0;
-	while (*str)
+	sp = 0;
+	sp_tmp = 0;
+	while (*s)
 	{
-		while (*str == c && *str)
+		if (sp_tmp == 1 && *s == c)
+			sp_tmp = 0;
+		if (sp_tmp == 0 && *s != c)
 		{
-			str++;
+			sp_tmp = 1;
+			sp++;
 		}
-		if (*str != c && *str)
-		{
-			nbr_strs++;
-		}
-		while (*str != c && *str)
-		{
-			str++;
-		}
+		s++;
 	}
-	return (nbr_strs);
+	return (sp);
 }
 
-char		**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
-	size_t	nbr_strs;
-	char	**result;
-	size_t	i;
-	size_t	l;
+	int		i;
+	int		j;
+	int		sp;
+	char	**tab;
+	int		start;
 
-	if (!s)
+	if ((s == 0) || (c == 0))
 		return (NULL);
-	l = 0;
-	nbr_strs = count_strings((char*)s, c);
-	if (!(result = (char**)malloc(sizeof(char*) * nbr_strs + 1)))
-		return (NULL);
-	while (l < nbr_strs)
+	sp = ft_count_words(s, c);
+	tab = malloc((sizeof(char *) * (sp + 1)));
+	i = 0;
+	j = -1;
+	while (++j < sp)
 	{
-		i = 0;
-		while (*s == c && *s)
-			s++;
-		while (s[i] != c && s[i])
+		while (s[i] && s[i] == c)
 			i++;
-		result[l] = ft_strndup((char*)s, i);
-		l++;
-		while (*s != c && *s)
-			s++;
+		start = i;
+		while (s[i] && s[i] != c)
+			i++;
+		tab[j] = ft_strsub(s, start, i - start);
+		i++;
 	}
-	result[l] = NULL;
-	return (result);
+	tab[j] = NULL;
+	return (tab);
 }

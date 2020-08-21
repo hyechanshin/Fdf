@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhasan <mhasan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/03 12:03:48 by mhasan            #+#    #+#             */
-/*   Updated: 2020/02/03 12:03:55 by mhasan           ###   ########.fr       */
+/*   Created: 2019/10/29 11:58:05 by hyshin            #+#    #+#             */
+/*   Updated: 2020/08/21 18:45:42 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-** Allocates and returns a fresh string ending with \0, result of the
-** concatenation of s1 and s2. It creates a fresh string in ft_strnew.
-** With ft_strlen it determines the length of the string of both strings
-** With ft_strcpy, the s1 will be copied into res and in ft_strcat the s2
-** will be appended to res.
-*/
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

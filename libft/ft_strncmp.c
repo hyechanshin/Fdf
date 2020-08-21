@@ -3,32 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismelich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/19 11:57:21 by ismelich          #+#    #+#             */
-/*   Updated: 2019/11/04 12:17:46 by ismelich         ###   ########.fr       */
+/*   Created: 2019/10/29 11:34:49 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/29 11:40:09 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Compares at most the first n bytes of s1 and s2.
-** If return value <0 then it indicates s1 is less than s2.
-** If return value >0 then it indicates s2 is less than s1.
-** If return value =0 then it indicates s1 is equal to s2.
-*/
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	while ((*s1 || *s2) && n--)
+	if (n == 0)
+		return (0);
+	else
 	{
-		if (*s1 != *s2)
+		while (--n && *s1 && *s2 && ((unsigned char)*s1 == (unsigned char)*s2))
 		{
-			return ((unsigned char)*s1 - (unsigned char)*s2);
+			++s1;
+			++s2;
 		}
-		s1++;
-		s2++;
 	}
-	return (0);
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

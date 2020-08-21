@@ -3,41 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhasan <mhasan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/23 17:19:42 by ismelich          #+#    #+#             */
-/*   Updated: 2020/02/03 12:04:06 by mhasan           ###   ########.fr       */
+/*   Created: 2019/10/22 15:11:02 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/29 15:14:16 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Copy bytes from memory area str2 into str1, stopping after the first
-** occurrence of byte c.
-*/
-
-void	*ft_memccpy(void *str1, const void *str2, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	unsigned char	*tmpstr1;
-	unsigned char	*tmpstr2;
-	unsigned char	tmpc;
-	size_t			i;
+	size_t				i;
+	unsigned char		*pt_dst;
+	unsigned char		*pt_src;
 
+	pt_dst = (unsigned char*)dst;
+	pt_src = (unsigned char*)src;
 	i = 0;
-	tmpstr1 = (unsigned char*)str1;
-	tmpstr2 = (unsigned char*)str2;
-	tmpc = (unsigned char)c;
-	while (n > 0)
+	while (i < n)
 	{
-		tmpstr1[i] = tmpstr2[i];
-		if (tmpstr2[i] == tmpc)
-		{
-			i++;
-			return ((void*)&tmpstr1[i]);
-		}
-		i++;
-		n--;
+		pt_dst[i] = pt_src[i];
+		if (pt_dst[i] == (unsigned char)c)
+			return ((void*)(dst + i + 1));
+		++i;
 	}
 	return (NULL);
 }

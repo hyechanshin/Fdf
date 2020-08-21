@@ -3,68 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhasan <mhasan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 11:06:08 by ismelich          #+#    #+#             */
-/*   Updated: 2020/02/03 12:04:06 by mhasan           ###   ########.fr       */
+/*   Created: 2019/10/29 11:11:33 by hyshin            #+#    #+#             */
+/*   Updated: 2019/11/07 14:29:42 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Converts int data type to string data type.
-** len-- - 1: We start from the end of the array and skip '\0' with -1.
-** n(21) % 10 + 48(ascii 0) = 50.1, we just have space for 1 char in our
-** array so 1 would be save in str. With n / 10 we take the 1 away and do
-** the math with 2 again, 48.2 would be the result, we place 2 in the array
-** the returned str would be 21.
-** In case of a minus int: The minus would be stored in the array as a char
-** on str[0] and removed from the int with -n.
-*/
-
-static int		length(int n)
+static int	len(long nb)
 {
-	int len;
+	int		len;
 
 	len = 0;
-	if (n < 0)
-		len++;
-	if (n == 0)
-		len = 1;
-	while (n)
+	if (nb < 0)
 	{
+		nb = nb * -1;
 		len++;
-		n = n / 10;
+	}
+	while (nb > 0)
+	{
+		nb = nb / 10;
+		len++;
 	}
 	return (len);
 }
 
-char			*ft_itoa(int n)
+char		*ft_itoa(int nb)
 {
 	char	*str;
-	int		len;
+	long	n;
+	int		i;
 
-	len = length(n);
-	str = ft_strnew(len);
-	if (str == NULL)
+	n = nb;
+	i = len(n);
+	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
+	str[i--] = '\0';
 	if (n == 0)
-		str[0] = '0';
+		str[0] = 48;
 	if (n < 0)
 	{
 		str[0] = '-';
-		if (n == -2147483648)
-		{
-			str[len-- - 1] = '8';
-			n = n / 10;
-		}
-		n = -n;
+		n = n * -1;
 	}
-	while (n != 0 && len >= 0)
+	while (n > 0)
 	{
-		str[len-- - 1] = n % 10 + 48;
+		str[i] = 48 + (n % 10);
 		n = n / 10;
+		i--;
 	}
 	return (str);
 }

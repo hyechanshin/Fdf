@@ -3,43 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismelich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 16:35:41 by ismelich          #+#    #+#             */
-/*   Updated: 2019/11/04 11:30:27 by ismelich         ###   ########.fr       */
+/*   Created: 2019/10/29 11:54:52 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/29 11:55:18 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Applies the function f (in my case the map function in main) to each
-** character of the string given as argument to create a fresh new string
-** (with malloc) resulting from the successive applications of f.
-** Returns the fresh string created from the successive applications of f.
-*/
-
-char	*ft_strmap(char const *s, char (*f)(char))
+char	*ft_strmap(char const *s, char (*f) (char))
 {
-	unsigned int	len;
-	unsigned int	i;
-	char			*str;
+	size_t	i;
+	char	*fresh;
 
 	if (!s || !f)
-	{
 		return (NULL);
-	}
+	fresh = ft_strnew(ft_strlen(s));
 	i = 0;
-	len = ft_strlen(s);
-	if (!(str = (char *)malloc(sizeof(char) * len + 1)))
-	{
-		return (NULL);
-	}
 	while (s[i])
 	{
-		str[i] = (*f)(s[i]);
+		fresh[i] = (*f)(s[i]);
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	return (fresh);
 }

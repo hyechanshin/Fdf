@@ -3,35 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismelich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/19 11:12:11 by ismelich          #+#    #+#             */
-/*   Updated: 2019/11/04 12:22:57 by ismelich         ###   ########.fr       */
+/*   Created: 2019/10/24 13:19:56 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/29 16:03:51 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Copies up to n characters fromt the string pointed to, by src to dest.
-** In a case where the length of src is less than that of n, the remainder
-** of dest will be padded with null bytes.
-*/
-
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < len && src[i])
+	while (i < n && src[i])
 	{
-		dst[i] = src[i];
+		dest[i] = src[i];
 		i++;
 	}
-	while (i < len)
+	while (i < n)
 	{
-		dst[i] = '\0';
+		dest[i] = '\0';
 		i++;
 	}
-	return (dst);
+	return (dest);
 }

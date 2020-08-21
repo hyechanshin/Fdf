@@ -3,39 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismelich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 18:39:00 by ismelich          #+#    #+#             */
-/*   Updated: 2019/11/04 11:34:51 by ismelich         ###   ########.fr       */
+/*   Created: 2019/10/29 11:55:31 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/29 11:55:53 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Applies function f (in my case mapi in main) to each character of the
-** string passed as argument by giving its index as first argument to create
-** a fresh new string (with malloc) resulting fromt the successive
-** applications of f. Returns the fresh string created form f.
-*/
-
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	i;
-	unsigned int	len;
+	unsigned int	l;
 	char			*str;
 
 	if (!s || !f)
-	{
 		return (NULL);
-	}
+	l = ft_strlen(s);
+	if (!(str = (char*)malloc(l + 1)))
+		return (NULL);
 	i = 0;
-	len = ft_strlen(s);
-	if (!(str = (char *)malloc(sizeof(char) * len + 1)))
-		return (NULL);
-	while (s[i])
+	while (i < l)
 	{
-		str[i] = (*f)(i, s[i]);
+		str[i] = f(i, s[i]);
 		i++;
 	}
 	str[i] = '\0';

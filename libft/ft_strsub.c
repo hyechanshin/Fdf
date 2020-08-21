@@ -3,47 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismelich <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/25 18:50:50 by ismelich          #+#    #+#             */
-/*   Updated: 2019/11/04 17:53:42 by ismelich         ###   ########.fr       */
+/*   Created: 2019/10/29 11:57:36 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/29 11:57:53 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Allocates (with malloc) and returns a fresh substirng from the string given
-** as a argument. The substring begins at indexstart and is of size len.
-** If start and len are not refering to a valid substring, the behavior is
-** undefined. If the allocation fails, the function returns NULL.
-** The substring will be Returned.
-** First we create a fresh allocated string in ft_strnew. With that string
-** we will return to our ft_strsub function and start to copie the chars to
-** our substring result with increasing i and start until we reache the
-** max len or '\0'.
-*/
-
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*result;
-	size_t	i;
+	char	*fresh;
+	int		i;
 
 	if (!s)
-	{
 		return (NULL);
-	}
+	fresh = malloc((len + 1) * sizeof(char));
 	i = 0;
-	result = ft_strnew(len);
-	if (!result)
-	{
+	if (!fresh)
 		return (NULL);
-	}
-	while (i < len)
+	fresh[len] = '\0';
+	while (len-- && s)
 	{
-		result[i] = s[start];
+		fresh[i] = s[start];
 		i++;
 		start++;
 	}
-	return (result);
+	return (fresh);
 }

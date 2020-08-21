@@ -3,37 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhasan <mhasan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 11:23:42 by ismelich          #+#    #+#             */
-/*   Updated: 2020/02/03 12:04:06 by mhasan           ###   ########.fr       */
+/*   Created: 2019/10/22 19:36:03 by hyshin            #+#    #+#             */
+/*   Updated: 2019/10/22 19:52:19 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Compares the first n bytes of memory are str1 and memory area str2.
-** The return will be int that shows the difference on the ascii table.
-*/
-
-int	ft_memcmp(const void *str1, const void *str2, size_t n)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned char	*tmpstr1;
-	unsigned char	*tmpstr2;
-	size_t			i;
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
+	int				i;
 
-	tmpstr1 = (unsigned char*)str1;
-	tmpstr2 = (unsigned char*)str2;
 	i = 0;
-	while (n > 0)
+	if (!s1 && !s2 && !n)
+		return (0);
+	ptr1 = (unsigned char *)s1;
+	ptr2 = (unsigned char *)s2;
+	while (n--)
 	{
-		if (tmpstr1[i] != tmpstr2[i])
-		{
-			return ((int)(tmpstr1[i] - tmpstr2[i]));
-		}
+		if (ptr1[i] != ptr2[i])
+			return (ptr1[i] - ptr2[i]);
 		i++;
-		n--;
 	}
 	return (0);
 }
