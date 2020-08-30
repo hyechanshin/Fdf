@@ -23,7 +23,8 @@ SRCS=	ft_iswspace.c ft_memmove.c ft_putstr.c ft_strdup.c ft_strmapi.c \
 		ft_toupper.c ft_isdigit.c ft_memcpy.c ft_putnbr.c ft_strcpy.c \
 		ft_strlen.c ft_strnstr.c ft_isprint.c ft_memdel.c ft_putnbr_fd.c \
 		ft_strdel.c ft_strmap.c ft_strrchr.c ft_lstnew.c ft_lstdelone.c \
-		ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c
+		ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_abs.c \
+		ft_words_counter.c get_next_line.c
 
 OBJECTS=ft_iswspace.o ft_memmove.o ft_putstr.o ft_strdup.o ft_strmapi.o \
 		ft_strsplit.o ft_atoi.o ft_itoa.o ft_memset.o ft_putstr_fd.o \
@@ -36,8 +37,8 @@ OBJECTS=ft_iswspace.o ft_memmove.o ft_putstr.o ft_strdup.o ft_strmapi.o \
 		ft_toupper.o ft_isdigit.o ft_memcpy.o ft_putnbr.o ft_strcpy.o \
 		ft_strlen.o ft_strnstr.o ft_isprint.o ft_memdel.o ft_putnbr_fd.o \
 		ft_strdel.o ft_strmap.o ft_strrchr.o ft_lstnew.o ft_lstdelone.o \
-		ft_lstdel.o ft_lstadd.o	ft_lstiter.o ft_lstmap.o
-
+		ft_lstdel.o ft_lstadd.o	ft_lstiter.o ft_lstmap.o ft_abs.o \
+		ft_words_counter.o get_next_line.o
 INCLUDES=./
 
 all: $(NAME)

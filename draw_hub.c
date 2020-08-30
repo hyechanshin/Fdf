@@ -19,7 +19,7 @@ void		print_menu(t_fdf *data)
 	mlx_string_put(data->mlx, data->win, 50, 90, 0x1C799E, "I for ISOMETRIC");
 	mlx_string_put(data->mlx, data->win, 50, 110, 0x1C799E, "P for PARALLEL");
 	mlx_string_put(data->mlx, data->win, 50, 130, 0x1C799E, "F for FRUIT");
-	mlx_string_put(data->mlx, data->win, 50, 150, 0x1C799E, "I for TRENDY");
+	mlx_string_put(data->mlx, data->win, 50, 150, 0x1C799E, "T for TRENDY");
 }
 
 /*
