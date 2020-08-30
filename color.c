@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/21 18:50:05 by hyshin            #+#    #+#             */
-/*   Updated: 2020/08/21 18:50:05 by hyshin           ###   ########.fr       */
+/*   Created: 2020/08/30 08:28:25 by hyshin            #+#    #+#             */
+/*   Updated: 2020/08/30 08:28:25 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	fruit_color(t_fdf *data, int x, int y)
 {
-	int	z;
+	int z;
 
 	z = data->map[y][x];
 	if (z * data->altitude < 0)

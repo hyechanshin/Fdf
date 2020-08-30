@@ -6,7 +6,7 @@
 /*   By: hyshin <kirikeria@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 13:42:23 by hyshin            #+#    #+#             */
-/*   Updated: 2019/11/07 15:38:57 by hyshin           ###   ########.fr       */
+/*   Updated: 2020/08/30 08:32:04 by hyshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int nb);
-int	ft_words_counter(char *str);
-int		ft_abs(int n);
+int					ft_words_counter(char *str);
+int					ft_abs(int n);
 typedef struct		s_list
 {
 	void			*content;
